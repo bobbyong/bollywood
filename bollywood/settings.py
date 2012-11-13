@@ -1,5 +1,7 @@
 # Django settings for bollywood project.
 import os
+import dj_database_url  
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost')} 
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -140,9 +142,6 @@ LOGGING = {
 
 
 if os.environ.get('MYSITE_PRODUCTION'):
-    import dj_database_url  
-    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')} 
-
     DEBUG = False
     TEMPLATE_DEBUG = False
 
@@ -159,9 +158,6 @@ if os.environ.get('MYSITE_PRODUCTION'):
 
 
 elif os.environ.get('MYSITE_STAGING'):
-    import dj_database_url  
-    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')} 
-
     DEBUG = False
     TEMPLATE_DEBUG = False
 
