@@ -61,6 +61,9 @@ class Episode(models.Model):
 	episode_name = models.CharField(max_length=200)
 	episode_duration = models.IntegerField(blank=True, null=True, 
 											help_text=u'Duration of episode in minutes')
+	episode_trailer = models.CharField(max_length=11, 
+									blank=True, 
+									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw')
 	episode_show = models.ForeignKey(Show)
 
 	def __unicode__(self):
