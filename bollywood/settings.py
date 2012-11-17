@@ -1,5 +1,7 @@
 # Django settings for bollywood project.
 import os
+  
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))  
 
 ADMINS = (
     ('Bobby Ong', 'bobbyongce@gmail.com'),
@@ -52,6 +54,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, '..', 'static'),  
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -91,6 +94,7 @@ ROOT_URLCONF = 'bollywood.urls'
 WSGI_APPLICATION = 'bollywood.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(SITE_ROOT, '..', 'templates'),  
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
