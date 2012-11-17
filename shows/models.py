@@ -306,9 +306,6 @@ class Episode(models.Model):
 									blank=True, 
 									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw',
 									verbose_name='Episode link')
-	episode_country = models.CharField(max_length=50, 
-									choices = COUNTRIES,
-									blank=True)
 	episode_show = models.ForeignKey(Show)
 	episode_startdate = models.DateField(blank=True, null=True)
 
