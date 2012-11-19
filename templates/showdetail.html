@@ -47,5 +47,9 @@
   {{ genre }}<br>
 {% endfor %} <br>
 
+<h5>Episode:</h5>
+{% for episode in show.show_episode.all %}
+  {{ episode }}<br>
+{% endfor %} <br>
 
 {% endblock %}

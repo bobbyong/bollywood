@@ -282,6 +282,23 @@ class Network(models.Model):
 		return self.network_name
 
 
+class Episode(models.Model):
+	episode_number = models.IntegerField()
+	episode_name = models.CharField(max_length=200)
+	episode_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Episode. Ensure name is unique.')
+	episode_duration = models.IntegerField(blank=True, null=True, 
+											help_text=u'Duration of episode in minutes')
+	episode_trailer = models.CharField(max_length=11, 
+									blank=True, 
+									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw',
+									verbose_name='Episode link')
+	episode_startdate = models.DateField(blank=True, null=True)
+
+	def __unicode__(self):
+		return self.episode_name
+
+
 class Show(models.Model):
 	show_name = models.CharField(max_length=200)
 	show_slug_name = models.SlugField(unique=True,
@@ -301,28 +318,7 @@ class Show(models.Model):
 	show_actor = models.ManyToManyField(Actor, blank=True, null=True)
 	show_director = models.ManyToManyField(Director, blank=True, null=True)
 	show_genre = models.ManyToManyField(Genre, blank=True, null=True)
+	show_episode = models.ManyToManyField(Episode, blank=True, null=True)
 
 	def __unicode__(self):
 		return self.show_name
-
-
-
-class Episode(models.Model):
-	episode_number = models.IntegerField()
-	episode_name = models.CharField(max_length=200)
-	episode_slug_name = models.SlugField(unique=True,
-										help_text=u'This is a permalink for Episode. Ensure name is unique.')
-	episode_duration = models.IntegerField(blank=True, null=True, 
-											help_text=u'Duration of episode in minutes')
-	episode_trailer = models.CharField(max_length=11, 
-									blank=True, 
-									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw',
-									verbose_name='Episode link')
-	episode_show = models.ForeignKey(Show)
-	episode_startdate = models.DateField(blank=True, null=True)
-
-	def __unicode__(self):
-		return self.episode_name
-
-
-
