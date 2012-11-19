@@ -248,7 +248,8 @@ COUNTRIES = (
 
 class Actor(models.Model):
 	actor_name = models.CharField(max_length=200, blank=True)
-	actor_slug_name = models.SlugField()
+	actor_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Actor. Ensure name is unique.')
 	
 
 	def __unicode__(self):
@@ -257,7 +258,8 @@ class Actor(models.Model):
 
 class Director(models.Model):
 	director_name = models.CharField(max_length=200, blank=True)
-	director_slug_name = models.SlugField()
+	director_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Director. Ensure name is unique.')
 	
 	def __unicode__(self):
 		return self.director_name
@@ -265,14 +267,16 @@ class Director(models.Model):
 
 class Genre(models.Model):
 	genre_type = models.CharField(max_length=200, blank=True)
-	genre_slug_type = models.SlugField()
+	genre_slug_type = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Genre. Ensure name is unique.')
 	
 	def __unicode__(self):
 		return self.genre_type
 
 class Network(models.Model):
 	network_name = models.CharField(max_length=100, blank=True)
-	network_slug_name = models.SlugField()
+	network_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Network. Ensure name is unique.')
 	
 	def __unicode__(self):
 		return self.network_name
@@ -280,7 +284,8 @@ class Network(models.Model):
 
 class Show(models.Model):
 	show_name = models.CharField(max_length=200)
-	show_slug_name = models.SlugField()
+	show_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Show. Ensure name is unique.')
 	show_startdate = models.DateField(blank=True, null=True)
 	show_current_episode = models.IntegerField(blank=True, null=True)
 	show_official_site = models.URLField(blank=True)
@@ -305,7 +310,8 @@ class Show(models.Model):
 class Episode(models.Model):
 	episode_number = models.IntegerField()
 	episode_name = models.CharField(max_length=200)
-	episode_slug_name = models.SlugField()
+	episode_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Episode. Ensure name is unique.')
 	episode_duration = models.IntegerField(blank=True, null=True, 
 											help_text=u'Duration of episode in minutes')
 	episode_trailer = models.CharField(max_length=11, 
