@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% if shows %}
+    <p>Found {{ shows|length }} show{{ students|pluralize }}.</p>
+    <ul>
+        {% for show in shows %}
+        <li><a href="#">{{ show.show_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No shows available.</p>
+{% endif %}
+
+{% endblock %}
