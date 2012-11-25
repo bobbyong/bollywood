@@ -8,128 +8,27 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Movie'
-        db.create_table('shows_movie', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('movie_name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('movie_slug_name', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=50)),
-            ('movie_abbrev', self.gf('django.db.models.fields.CharField')(unique=True, max_length=10)),
-            ('movie_pix1', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('movie_pix2', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('movie_pix3', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('movie_startdate', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
-            ('movie_current_episode', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('movie_official_site', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
-            ('movie_rating', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('movie_trailer', self.gf('django.db.models.fields.CharField')(max_length=11, blank=True)),
-            ('movie_storyline', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('movie_country', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-        ))
-        db.send_create_signal('shows', ['Movie'])
-
-        # Adding M2M table for field movie_network on 'Movie'
-        db.create_table('shows_movie_movie_network', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('movie', models.ForeignKey(orm['shows.movie'], null=False)),
-            ('network', models.ForeignKey(orm['shows.network'], null=False))
-        ))
-        db.create_unique('shows_movie_movie_network', ['movie_id', 'network_id'])
-
-        # Adding M2M table for field movie_actor on 'Movie'
-        db.create_table('shows_movie_movie_actor', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('movie', models.ForeignKey(orm['shows.movie'], null=False)),
-            ('actor', models.ForeignKey(orm['shows.actor'], null=False))
-        ))
-        db.create_unique('shows_movie_movie_actor', ['movie_id', 'actor_id'])
-
-        # Adding M2M table for field movie_director on 'Movie'
-        db.create_table('shows_movie_movie_director', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('movie', models.ForeignKey(orm['shows.movie'], null=False)),
-            ('director', models.ForeignKey(orm['shows.director'], null=False))
-        ))
-        db.create_unique('shows_movie_movie_director', ['movie_id', 'director_id'])
-
-        # Adding M2M table for field movie_genre on 'Movie'
-        db.create_table('shows_movie_movie_genre', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('movie', models.ForeignKey(orm['shows.movie'], null=False)),
-            ('genre', models.ForeignKey(orm['shows.genre'], null=False))
-        ))
-        db.create_unique('shows_movie_movie_genre', ['movie_id', 'genre_id'])
-
-        # Adding M2M table for field movie_episode on 'Movie'
-        db.create_table('shows_movie_movie_episode', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('movie', models.ForeignKey(orm['shows.movie'], null=False)),
-            ('episode', models.ForeignKey(orm['shows.episode'], null=False))
-        ))
-        db.create_unique('shows_movie_movie_episode', ['movie_id', 'episode_id'])
-
-        # Adding field 'Show.show_abbrev'
-        db.add_column('shows_show', 'show_abbrev',
-                      self.gf('django.db.models.fields.CharField')(default=9999, max_length=10),
-                      keep_default=False)
-
-        # Adding field 'Show.show_pix1'
-        db.add_column('shows_show', 'show_pix1',
-                      self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True),
-                      keep_default=False)
-
-        # Adding field 'Show.show_pix2'
-        db.add_column('shows_show', 'show_pix2',
-                      self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True),
-                      keep_default=False)
-
-        # Adding field 'Show.show_pix3'
-        db.add_column('shows_show', 'show_pix3',
-                      self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True),
+        # Adding field 'Movie.movie_test'
+        db.add_column('shows_movie', 'movie_test',
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Movie'
-        db.delete_table('shows_movie')
-
-        # Removing M2M table for field movie_network on 'Movie'
-        db.delete_table('shows_movie_movie_network')
-
-        # Removing M2M table for field movie_actor on 'Movie'
-        db.delete_table('shows_movie_movie_actor')
-
-        # Removing M2M table for field movie_director on 'Movie'
-        db.delete_table('shows_movie_movie_director')
-
-        # Removing M2M table for field movie_genre on 'Movie'
-        db.delete_table('shows_movie_movie_genre')
-
-        # Removing M2M table for field movie_episode on 'Movie'
-        db.delete_table('shows_movie_movie_episode')
-
-        # Deleting field 'Show.show_abbrev'
-        db.delete_column('shows_show', 'show_abbrev')
-
-        # Deleting field 'Show.show_pix1'
-        db.delete_column('shows_show', 'show_pix1')
-
-        # Deleting field 'Show.show_pix2'
-        db.delete_column('shows_show', 'show_pix2')
-
-        # Deleting field 'Show.show_pix3'
-        db.delete_column('shows_show', 'show_pix3')
+        # Deleting field 'Movie.movie_test'
+        db.delete_column('shows_movie', 'movie_test')
 
 
     models = {
         'shows.actor': {
             'Meta': {'object_name': 'Actor'},
-            'actor_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'actor_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'actor_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
         'shows.director': {
             'Meta': {'object_name': 'Director'},
-            'director_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'director_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'director_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
@@ -146,7 +45,7 @@ class Migration(SchemaMigration):
         'shows.genre': {
             'Meta': {'object_name': 'Genre'},
             'genre_slug_type': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
-            'genre_type': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'genre_type': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
         'shows.movie': {
@@ -155,27 +54,33 @@ class Migration(SchemaMigration):
             'movie_abbrev': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '10'}),
             'movie_actor': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Actor']", 'null': 'True', 'blank': 'True'}),
             'movie_country': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'movie_current_episode': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'movie_director': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Director']", 'null': 'True', 'blank': 'True'}),
-            'movie_episode': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Episode']", 'null': 'True', 'blank': 'True'}),
             'movie_genre': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Genre']", 'null': 'True', 'blank': 'True'}),
+            'movie_language': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'movie_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'movie_network': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Network']", 'null': 'True', 'blank': 'True'}),
             'movie_official_site': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
             'movie_pix1': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'movie_pix2': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'movie_pix3': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'movie_production_house': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Production_House']", 'null': 'True', 'blank': 'True'}),
             'movie_rating': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'movie_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
             'movie_startdate': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
             'movie_storyline': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'movie_test': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'movie_trailer': ('django.db.models.fields.CharField', [], {'max_length': '11', 'blank': 'True'})
         },
         'shows.network': {
             'Meta': {'object_name': 'Network'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'network_name': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
+            'network_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'network_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'})
+        },
+        'shows.production_house': {
+            'Meta': {'object_name': 'Production_House'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'production_house_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'production_house_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'})
         },
         'shows.show': {
             'Meta': {'object_name': 'Show'},

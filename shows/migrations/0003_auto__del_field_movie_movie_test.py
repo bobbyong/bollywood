@@ -8,18 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Removing M2M table for field movie_episode on 'Movie'
-        db.delete_table('shows_movie_movie_episode')
+        # Deleting field 'Movie.movie_test'
+        db.delete_column('shows_movie', 'movie_test')
 
 
     def backwards(self, orm):
-        # Adding M2M table for field movie_episode on 'Movie'
-        db.create_table('shows_movie_movie_episode', (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('movie', models.ForeignKey(orm['shows.movie'], null=False)),
-            ('episode', models.ForeignKey(orm['shows.episode'], null=False))
-        ))
-        db.create_unique('shows_movie_movie_episode', ['movie_id', 'episode_id'])
+        # Adding field 'Movie.movie_test'
+        db.add_column('shows_movie', 'movie_test',
+                      self.gf('django.db.models.fields.CharField')(default='', max_length=50, blank=True),
+                      keep_default=False)
 
 
     models = {
@@ -62,9 +59,9 @@ class Migration(SchemaMigration):
             'movie_language': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
             'movie_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'movie_official_site': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'movie_pix1': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'movie_pix2': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'movie_pix3': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'movie_pix1': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'movie_pix2': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'movie_pix3': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'movie_production_house': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Production_House']", 'null': 'True', 'blank': 'True'}),
             'movie_rating': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'movie_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
@@ -97,9 +94,9 @@ class Migration(SchemaMigration):
             'show_name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'show_network': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['shows.Network']", 'null': 'True', 'blank': 'True'}),
             'show_official_site': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
-            'show_pix1': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'show_pix2': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'show_pix3': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
+            'show_pix1': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'show_pix2': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'show_pix3': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'show_rating': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'show_slug_name': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
             'show_startdate': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
