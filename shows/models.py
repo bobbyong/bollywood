@@ -378,8 +378,6 @@ class Movie(models.Model):
 	movie_actor = models.ManyToManyField(Actor, blank=True, null=True)
 	movie_director = models.ManyToManyField(Director, blank=True, null=True)
 	movie_genre = models.ManyToManyField(Genre, blank=True, null=True)
-	movie_test2 = models.CharField(max_length=50,
-									blank=True)
 
 	def __unicode__(self):
 		return self.movie_name
