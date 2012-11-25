@@ -21,10 +21,9 @@ def show_detail(request, show_slug):
                             context_instance=RequestContext(request))
 
 
-def episode_detail(request, show_slug, episode_slug):
+def episode_detail(request, show_slug, episode_id):
     try:
-        show = Show.objects.get(show_slug_name=show_slug)
-        episode = Episode.objects.get(episode_slug_name = episode_slug)
+        episode = Episode.objects.get(id = episode_id)
     except Show.DoesNotExist:
         raise Http404
     return render_to_response('episodedetail.html',

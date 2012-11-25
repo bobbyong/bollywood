@@ -17,5 +17,5 @@ urlpatterns = patterns('',
     url(r'^home/', TemplateView.as_view(template_name='home.html')),
     url(r'^$', 'shows.views.show_list'),
     url(r'^show/(?P<show_slug>[-\w]+)/$', 'shows.views.show_detail'),
-    url(r'^show/(?P<show_slug>[-\w]+)/(?P<episode_slug>[-\w]+)$', 'shows.views.episode_detail'),
+    url(r'^show/(?P<show_slug>[-\w]+)/(?P<episode_id>[-\w]+)$', 'shows.views.episode_detail'),
 )

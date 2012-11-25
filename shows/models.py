@@ -4,7 +4,6 @@ from django.utils.translation import ugettext as _
 
 # http://xml.coverpages.org/country3166.html
 COUNTRIES = (
-	('IN', _('India')),
 	('AD', _('Andorra')),
 	('AE', _('United Arab Emirates')),
 	('AF', _('Afghanistan')),
@@ -101,6 +100,7 @@ COUNTRIES = (
 	('HR', _('Croatia')),
 	('HT', _('Haiti')),
 	('HU', _('Hungary')),
+	('IN', _('India')),
 	('ID', _('Indonesia')),
 	('IE', _('Ireland')),
 	('IL', _('Israel')),
@@ -303,6 +303,17 @@ class Show(models.Model):
 	show_name = models.CharField(max_length=200)
 	show_slug_name = models.SlugField(unique=True,
 										help_text=u'This is a permalink for Show. Ensure name is unique.')
+	show_abbrev = models.CharField(max_length=10,
+										help_text=u'Choose a unique abbreviation. Max length 10 characters.')
+	show_pix1 = models.CharField(max_length=200,
+									blank=True, null=True,
+									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
+	show_pix2 = models.CharField(max_length=200,
+									blank=True, null=True,
+									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
+	show_pix3 = models.CharField(max_length=200,
+									blank=True, null=True,
+									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_startdate = models.DateField(blank=True, null=True)
 	show_current_episode = models.IntegerField(blank=True, null=True)
 	show_official_site = models.URLField(blank=True)
@@ -322,3 +333,40 @@ class Show(models.Model):
 
 	def __unicode__(self):
 		return self.show_name
+
+
+
+class Movie(models.Model):
+	movie_name = models.CharField(max_length=200)
+	movie_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Show. Ensure name is unique.')
+	movie_abbrev = models.CharField(max_length=10, unique=True,
+										help_text=u'Choose a unique abbreviation. Max length 10 characters.')
+	movie_pix1 = models.CharField(max_length=200,
+									blank=True, null=True,
+									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
+	movie_pix2 = models.CharField(max_length=200,
+									blank=True, null=True,
+									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
+	movie_pix3 = models.CharField(max_length=200,
+									blank=True, null=True,
+									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
+	movie_startdate = models.DateField(blank=True, null=True)
+	movie_current_episode = models.IntegerField(blank=True, null=True)
+	movie_official_site = models.URLField(blank=True)
+	movie_rating = models.IntegerField(blank=True, null=True)
+	movie_trailer = models.CharField(max_length=11, 
+									blank=True, 
+									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw')
+	movie_storyline = models.TextField(blank=True)
+	movie_country = models.CharField(max_length=50,
+									choices = COUNTRIES, 
+									blank=True)
+	movie_network = models.ManyToManyField(Network, blank=True, null=True)
+	movie_actor = models.ManyToManyField(Actor, blank=True, null=True)
+	movie_director = models.ManyToManyField(Director, blank=True, null=True)
+	movie_genre = models.ManyToManyField(Genre, blank=True, null=True)
+	movie_episode = models.ManyToManyField(Episode, blank=True, null=True)
+
+	def __unicode__(self):
+		return self.movie_name

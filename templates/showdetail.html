@@ -49,7 +49,7 @@
 
 <h5>Episode:</h5>
 {% for episode in show.show_episode.all %}
-  <a href="/show/{{ show.show_slug_name }}/{{ episode.episode_slug_name }}">{{ episode }}<br>
+  <a href="/show/{{ show.show_slug_name }}/{{ episode.id }}">{{ episode }}<br>
 {% endfor %} <br>
 
 {% endblock %}
