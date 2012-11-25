@@ -336,7 +336,6 @@ class Show(models.Model):
 									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw')
 	show_storyline = models.TextField(blank=True)
 	show_country = models.CharField(max_length=50,
-									choices = COUNTRIES, 
 									blank=True)
 	show_network = models.ManyToManyField(Network, blank=True, null=True)
 	show_actor = models.ManyToManyField(Actor, blank=True, null=True)
@@ -372,7 +371,6 @@ class Movie(models.Model):
 									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw')
 	movie_storyline = models.TextField(blank=True)
 	movie_country = models.CharField(max_length=50,
-									choices = COUNTRIES, 
 									blank=True)
 	movie_language = models.CharField(max_length=50,
 									blank=True)
@@ -380,7 +378,6 @@ class Movie(models.Model):
 	movie_actor = models.ManyToManyField(Actor, blank=True, null=True)
 	movie_director = models.ManyToManyField(Director, blank=True, null=True)
 	movie_genre = models.ManyToManyField(Genre, blank=True, null=True)
-	movie_episode = models.ManyToManyField(Episode, blank=True, null=True)
 
 	def __unicode__(self):
 		return self.movie_name

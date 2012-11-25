@@ -1,6 +1,6 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from .models import Show, Episode
+from .models import Show, Episode, Movie
 
 from django.http import Http404
 
@@ -40,7 +40,7 @@ def movie_list(request):
 
 def movie_detail(request, movie_slug):
     try:
-        movie = Movie.objects.get(show_movie_name=movie_slug)
+        movie = Movie.objects.get(movie_slug_name=movie_slug)
     except Movie.DoesNotExist:
         raise Http404
     return render_to_response('moviedetail.html',
