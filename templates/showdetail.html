@@ -3,53 +3,91 @@
 {% block title %}{{ block.super }} - {{ show.show_name }}{% endblock %}
 
 {% block content %}
-<h2>{{ show.show_name }}</h2>
+<h2>{{ show.show_name }}</h2><br>
 
-<br>
+{% if show.startdate %}
 <h5>Start Date:</h5>
 {{ show.show_startdate }}<br>
+{% endif %}
 
+{% if show.show_current_episode %}
 <h5>Current Episode:</h5>
 {{ show.show_current_episode }}<br>
+{% endif %}
 
-
+{% if show.show_official_site %}
 <h5>Official Site:</h5>
 {{ show.show_official_site }}<br>
+{% endif %}
 
+{% if show.show_rating %}
 <h5>Rating:</h5>
 {{ show.show_rating }}<br>
+{% endif %}
 
+{% if show.show_trailer %}
 <h5>Trailer:</h5>
 <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ show.show_trailer }}?rel=0" frameborder="0" allowfullscreen></iframe><br>
+{% endif %}
 
+{% if show.show_storyline %}
 <h5>Storyline:</h5>
 {{ show.show_storyline }}<br>
+{% endif %}
 
-<h5>Country:</h5>{{ show.show_country }}<br>
+{% if show.show_country %}
+<h5>Country:</h5>
+{{ show.show_country }}<br>
+{% endif %}
 
+{% if show.show_network.all %}
 <h5>Network:</h5>
 {% for network in show.show_network.all %}
   {{ network }}<br>
 {% endfor %} <br>
+{% endif %}
 
+{% if show.show_actor.all %}
 <h5>Actor:</h5>
 {% for actor in show.show_actor.all %}
   {{ actor }}<br>
 {% endfor %} <br>
+{% endif %}
 
+{% if show.show_director.all %}
 <h5>Director:</h5>
 {% for director in show.show_director.all %}
   {{ director }}<br>
 {% endfor %} <br>
+{% endif %}
 
+{% if show.show_genre.all %}
 <h5>Genre:</h5>
 {% for genre in show.show_genre.all %}
   {{ genre }}<br>
 {% endfor %} <br>
+{% endif %}
 
+{% if show.show_episode.all %}
 <h5>Episode:</h5>
 {% for episode in show.show_episode.all %}
   <a href="/show/{{ show.show_slug_name }}/{{ episode.id }}">{{ episode }}<br>
 {% endfor %} <br>
+{% endif %}
+
+{% if show.show_pix1 %}
+<h5>Show Pix 1:</h5>
+<img src = "{{ show.show_pix1 }}" width = "200px"><br><br>
+{% endif %}
+
+{% if show.show_pix2 %}
+<h5>Show Pix 2:</h5>
+<img src = "{{ show.show_pix2 }}" width = "200px"><br><br>
+{% endif %}
+
+{% if show.show_pix3 %}
+<h5>Show Pix 3:</h5>
+<img src = "{{ show.show_pix3 }}" width = "200px"><br><br> 
+{% endif %}
 
 {% endblock %}
