@@ -319,13 +319,13 @@ class Show(models.Model):
 	show_abbrev = models.CharField(max_length=10,
 										help_text=u'Choose a unique abbreviation. Max length 10 characters.')
 	show_pix1 = models.CharField(max_length=200,
-									blank=True,
+									blank=True, null=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_pix2 = models.CharField(max_length=200,
-									blank=True, 
+									blank=True, null=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_pix3 = models.CharField(max_length=200,
-									blank=True, 
+									blank=True, null=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_startdate = models.DateField(blank=True, null=True)
 	show_current_episode = models.IntegerField(blank=True, null=True)
@@ -355,13 +355,13 @@ class Movie(models.Model):
 	movie_abbrev = models.CharField(max_length=10, unique=True,
 										help_text=u'Choose a unique abbreviation. Max length 10 characters.')
 	movie_pix1 = models.CharField(max_length=200,
-									blank=True,
+									blank=True, null=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	movie_pix2 = models.CharField(max_length=200,
-									blank=True,
+									blank=True, null=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	movie_pix3 = models.CharField(max_length=200,
-									blank=True,
+									blank=True, null=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	movie_startdate = models.DateField(blank=True, null=True)
 	movie_official_site = models.URLField(blank=True)
