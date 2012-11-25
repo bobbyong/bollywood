@@ -156,14 +156,13 @@ if os.environ.get('MYSITE_PRODUCTION'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'd6taliejv5fgua',                      # Or path to database file if using sqlite3.
-            'USER': 'vmcbrtttzpglhe',                      # Not used with sqlite3.
-            'PASSWORD': 'Um7epj_c6c9mm21wdntLu-shDE',                  # Not used with sqlite3.
-            'HOST': 'ec2-54-243-39-42.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
+            'NAME': 'dcqo5t724uocrk',                      # Or path to database file if using sqlite3.
+            'USER': 'tcdoawjiktzsdf',                      # Not used with sqlite3.
+            'PASSWORD': 'i_zpTfETAMyR9HnabW5xPPuF6m',                  # Not used with sqlite3.
+            'HOST': 'ec2-107-22-169-148.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
             'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
-
 
 elif os.environ.get('MYSITE_STAGING'):
     import dj_database_url  
