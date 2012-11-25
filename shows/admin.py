@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Show, Episode, Actor, Director, Genre, Network, Movie
+from .models import Show, Episode, Actor, Director, Genre, Network, Movie, Production_House
 
 class ActorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'actor_slug_name': ['actor_name']}
@@ -12,6 +12,9 @@ class GenreAdmin(admin.ModelAdmin):
 
 class NetworkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'network_slug_name': ['network_name']}
+
+class Production_HouseAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'production_house_slug_name': ['production_house_name']}
 
 class ShowAdmin(admin.ModelAdmin):
     prepopulated_fields = {'show_slug_name': ['show_name']}
@@ -30,3 +33,4 @@ admin.site.register(Network, NetworkAdmin)
 admin.site.register(Show, ShowAdmin)
 admin.site.register(Episode, EpisodeAdmin)
 admin.site.register(Movie, MovieAdmin)
+admin.site.register(Production_House, Production_HouseAdmin)

@@ -282,6 +282,19 @@ class Network(models.Model):
 		return self.network_name
 
 
+class Production_House(models.Model):
+	production_house_name = models.CharField(max_length=100, blank=True)
+	production_house_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for Production House. Ensure name is unique.')
+	
+	class Meta:
+	    verbose_name = u'Production House'
+	    verbose_name_plural = u'Production Houses'
+
+	def __unicode__(self):
+		return self.production_house_name
+
+
 class Episode(models.Model):
 	episode_number = models.IntegerField()
 	episode_name = models.CharField(max_length=200)
@@ -306,13 +319,13 @@ class Show(models.Model):
 	show_abbrev = models.CharField(max_length=10,
 										help_text=u'Choose a unique abbreviation. Max length 10 characters.')
 	show_pix1 = models.CharField(max_length=200,
-									blank=True, null=True,
+									blank=True,
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_pix2 = models.CharField(max_length=200,
-									blank=True, null=True,
+									blank=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_pix3 = models.CharField(max_length=200,
-									blank=True, null=True,
+									blank=True, 
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	show_startdate = models.DateField(blank=True, null=True)
 	show_current_episode = models.IntegerField(blank=True, null=True)
@@ -343,16 +356,15 @@ class Movie(models.Model):
 	movie_abbrev = models.CharField(max_length=10, unique=True,
 										help_text=u'Choose a unique abbreviation. Max length 10 characters.')
 	movie_pix1 = models.CharField(max_length=200,
-									blank=True, null=True,
+									blank=True,
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	movie_pix2 = models.CharField(max_length=200,
-									blank=True, null=True,
+									blank=True,
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	movie_pix3 = models.CharField(max_length=200,
-									blank=True, null=True,
+									blank=True,
 									help_text=u'Insert picture URL here. Max length 200 characters. If longer use bit.ly to shorten')
 	movie_startdate = models.DateField(blank=True, null=True)
-	movie_current_episode = models.IntegerField(blank=True, null=True)
 	movie_official_site = models.URLField(blank=True)
 	movie_rating = models.IntegerField(blank=True, null=True)
 	movie_trailer = models.CharField(max_length=11, 
@@ -362,7 +374,9 @@ class Movie(models.Model):
 	movie_country = models.CharField(max_length=50,
 									choices = COUNTRIES, 
 									blank=True)
-	movie_network = models.ManyToManyField(Network, blank=True, null=True)
+	movie_language = models.CharField(max_length=50,
+									blank=True)
+	movie_production_house = models.ManyToManyField(Production_House, blank=True, null=True)
 	movie_actor = models.ManyToManyField(Actor, blank=True, null=True)
 	movie_director = models.ManyToManyField(Director, blank=True, null=True)
 	movie_genre = models.ManyToManyField(Genre, blank=True, null=True)
