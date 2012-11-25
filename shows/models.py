@@ -247,7 +247,7 @@ COUNTRIES = (
 
 
 class Actor(models.Model):
-	actor_name = models.CharField(max_length=200, blank=True)
+	actor_name = models.CharField(max_length=200)
 	actor_slug_name = models.SlugField(unique=True,
 										help_text=u'This is a permalink for Actor. Ensure name is unique.')
 	
@@ -257,7 +257,7 @@ class Actor(models.Model):
 
 
 class Director(models.Model):
-	director_name = models.CharField(max_length=200, blank=True)
+	director_name = models.CharField(max_length=200)
 	director_slug_name = models.SlugField(unique=True,
 										help_text=u'This is a permalink for Director. Ensure name is unique.')
 	
@@ -266,7 +266,7 @@ class Director(models.Model):
 
 
 class Genre(models.Model):
-	genre_type = models.CharField(max_length=200, blank=True)
+	genre_type = models.CharField(max_length=200)
 	genre_slug_type = models.SlugField(unique=True,
 										help_text=u'This is a permalink for Genre. Ensure name is unique.')
 	
@@ -274,7 +274,7 @@ class Genre(models.Model):
 		return self.genre_type
 
 class Network(models.Model):
-	network_name = models.CharField(max_length=100, blank=True)
+	network_name = models.CharField(max_length=100)
 	network_slug_name = models.SlugField(unique=True,
 										help_text=u'This is a permalink for Network. Ensure name is unique.')
 	
@@ -283,7 +283,7 @@ class Network(models.Model):
 
 
 class Production_House(models.Model):
-	production_house_name = models.CharField(max_length=100, blank=True)
+	production_house_name = models.CharField(max_length=100)
 	production_house_slug_name = models.SlugField(unique=True,
 										help_text=u'This is a permalink for Production House. Ensure name is unique.')
 	
