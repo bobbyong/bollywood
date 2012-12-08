@@ -112,7 +112,12 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'south',
+    'accounts',
+
     'shows',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -145,6 +150,30 @@ LOGGING = {
 }
 
 
+# DJANGO USERENA SETTINGS
+
+AUTHENTICATION_BACKENDS = (  
+        'userena.backends.UserenaAuthenticationBackend',  
+        'guardian.backends.ObjectPermissionBackend',  
+        'django.contrib.auth.backends.ModelBackend',  
+    )  
+  
+ANONYMOUS_USER_ID = -1  
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
+  
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'  
+LOGIN_URL = '/accounts/signin/'  
+LOGOUT_URL = '/accounts/signout/'
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = 'bobbyong2001@gmail.com'  
+EMAIL_HOST_PASSWORD = 'nknietafkbngsldi'  
+
+
+# SERVER ENVIRONMENT SETTINGS
 
 if os.environ.get('MYSITE_PRODUCTION'):
     import dj_database_url  
