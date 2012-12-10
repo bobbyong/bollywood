@@ -8,7 +8,7 @@
         
 
         <div class="span8">
-          <h3>{{ show.show_name }}</h2>
+          <h3><a href = "/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></h2>
            <p>
             <div class="videoWrapperPlaylist">
               <iframe width="780" height="439" src="http://www.youtube.com/embed/{{ episode.episode_trailer }}?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -21,7 +21,7 @@
             </div>
             -->
 
-            
+
         </div>
         
         <div class="span4">
@@ -36,7 +36,7 @@
             
             <div class="accordion-group">
               <div class="accordion-heading">
-                <span class = "accordion-toggle">{{ show.show_name }}</span>
+                <span class = "accordion-toggle"><a href = "/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></span>
                 <!-- <a href="#collapseThree" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
                   {{ show.show_name }}
                 </a> -->
