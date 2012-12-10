@@ -21,6 +21,17 @@ def show_detail(request, show_slug):
                             context_instance=RequestContext(request))
 
 
+def show_playlist(request, show_slug, episode_id):
+    try:
+        show = Show.objects.get(show_slug_name=show_slug)
+        episode = Episode.objects.get(id = episode_id)
+    except Show.DoesNotExist:
+        raise Http404
+    return render_to_response('showplaylist.html',
+                            {'show': show, 'episode': episode},
+                            context_instance=RequestContext(request))
+
+
 def episode_detail(request, show_slug, episode_id):
     try:
         episode = Episode.objects.get(id = episode_id)
