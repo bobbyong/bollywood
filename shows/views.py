@@ -1,8 +1,18 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from .models import Show, Episode, Movie
+from .models import Show, Episode, Movie, Genre
 
 from django.http import Http404
+
+def home_page(request):
+	shows = Show.objects.all()
+	movies = Movie.objects.all()
+	genres = Genre.objects.all()
+	return render_to_response('homepage.html',
+            				{'shows': shows, 'movies': movies, 'genres': genres},
+                            context_instance=RequestContext(request))
+
+
 
 def show_list(request):
 	shows = Show.objects.all()

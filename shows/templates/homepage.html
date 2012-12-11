@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - List of Shows{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+      <!--  Carousel -->
+      <!--  consult Bootstrap docs at 
+            http://twitter.github.com/bootstrap/javascript.html#carousel -->
+      <div id="this-carousel-id" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <a href="/show/koffee-karan/">  <img src="https://s3.amazonaws.com/Dekkho-Images/TV+Shows/Koffee+With+Karan+header.jpg" width="900" height="200" 
+alt="Koffee with Karan" />
+            </a>
+			 <div class="container">
+					<div class="carousel-caption">
+					  <a class="btn btn-large btn-primary" href="/show/koffee-karan/">Watch Now</a>
+					</div>
+			 </div>
+          </div>
+          <div class="item">
+            <a href="">
+              <img src="{{ STATIC_URL }}img/kbc.jpg" width="900" height="200" alt="Kaun Banega Crorepati" />
+            </a>
+            <div class="carousel-caption">
+              <p>Kaun Banega Crorepati </p>
+              
+            </div>
+          </div>
+          <div class="item">
+            <a href="/show/koffee-karan/">
+              <img src="{{ STATIC_URL }}img/superdude.jpg" width="900" height="200"  alt="Super Dude" />
+            </a>
+            <div class="carousel-caption">
+              <p>Super Dude</p>
+              <p><a href=""></a></p>
+            </div>
+          </div>
+          <div class="item">
+            <a href="">
+              <img src="{{ STATIC_URL }}img/DanceIndiaDance.jpg" width="900" height="200"alt="DanceIndiaDance" />
+            </a>
+            <div class="carousel-caption">
+              <p>Dance India Dance</p>
+              <p><a href=""></a></p>
+            </div>
+          </div>
+        </div><!-- .carousel-inner -->
+        <!--  next and previous controls here
+              href values must reference the id for this carousel -->
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- .carousel -->
+      <!-- end carousel -->
+
+	  
+	  
+	  <div class="row">
+							<div class="tabbable span12">
+								<ul class="nav nav-pills">
+									<li class="active"><a href="#tabs1-pane1" data-toggle="tab">Family</a></li>
+									<li><a href="#tabs1-pane2" data-toggle="tab">Talk Show</a></li>
+									<li><a href="#tabs1-pane3" data-toggle="tab">Music</a></li>
+									<li><a href="#tabs1-pane4" data-toggle="tab">Reality Show</a></li>
+									<li><a href="#tabs1-pane5" data-toggle="tab">All Shows</a></li>
+									
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tabs1-pane1">
+										<div clas="row">
+												<ul class="media-grid">
+													{% if genres %}
+															{% for genre in genres %}
+																{%if genre.show_set.all|length and genre.genre_type = 'Family' %}
+																	<p>	<span class="label label-info">{{genre.genre_type}} </span> </p>
+																	
+																		{% for show in genre.show_set.all %}
+																			{%if show.show_pix1 %}
+																				<div class="span16"> 
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																				</div>
+																			{% endif %}
+																		{% endfor %}
+																{%endif%}
+															{% endfor %}
+														
+													{% else %}
+														<p>No genre available.</p>
+													{% endif %}
+													</ul>
+											</div>
+										</div>
+									<div class="tab-pane" id="tabs1-pane2">
+										<div clas="row">
+												<ul class="media-grid">
+													{% if genres %}
+															{% for genre in genres %}
+																{%if genre.show_set.all|length and genre.genre_type = 'Talk Show' %}
+																	<p>	<span class="label label-info">{{genre.genre_type}} </span> </p>
+																		{% for show in genre.show_set.all %}
+																			{%if show.show_pix1 %}
+																				<div class="span16"> 
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																				</div>
+																			{% endif %}
+																		{% endfor %}
+																{%endif%}
+															{% endfor %}
+														
+													{% else %}
+														<p>No genre available.</p>
+													{% endif %}
+													</ul>
+											</div>
+										
+									</div>
+									<div class="tab-pane" id="tabs1-pane3">
+										<div clas="row">
+												<ul class="media-grid">
+													{% if genres %}
+															{% for genre in genres %}
+																{%if genre.show_set.all|length and genre.genre_type = 'Music themed' %}
+																<p><span class="label label-info">{{genre.genre_type}} </span> </p>
+																		{% for show in genre.show_set.all %}
+																			{%if show.show_pix1 %}
+																				<div> 
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																				</div>
+																			{% endif %}
+																		{% endfor %}
+																{%endif%}
+															{% endfor %}
+														
+													{% else %}
+														<p>No genre available.</p>
+													{% endif %}
+													</ul>
+											</div>
+									</div>
+									
+									<div class="tab-pane" id="tabs1-pane4">
+										<div>
+												<ul class="media-grid">
+													{% if genres %}
+															{% for genre in genres %}
+																{%if genre.show_set.all|length and genre.genre_type = 'Reality Shows' %}
+																<p>	<span class="label label-info">{{genre.genre_type}} </span> </p>
+																		{% for show in genre.show_set.all %}
+																			{%if show.show_pix1 %}
+																				<div class ="span16"> 
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																				</div>
+																			{% endif %}
+																		{% endfor %}
+																{%endif%}
+															{% endfor %}
+														
+													{% else %}
+														<p>No genre available.</p>
+													{% endif %}
+													</ul>
+											</div>
+									</div>
+
+									
+									
+									
+									
+																		
+																		
+																		<!--Thumnails starts here-->
+									<div class="tab-pane" id="tabs1-pane5">
+										<div class ="row">
+												<ul class="media-grid">
+												{% if shows %}
+													<ul>
+														{% for show in shows %}
+															{%if show.show_pix1 %}
+																<div class = "span 6"> 
+																	<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																</div>
+															{%else%}
+														
+															{% endif %}
+														{% endfor %}
+													</ul>
+												{% else %}
+													<p>No shows available.</p>
+												{% endif %}
+											</ul>
+										</div>
+										</div>
+									<!--Thumnails ends here-->
+									
+							</div><!-- /.tab-content -->
+						</div><!-- /.tabbable -->
+			</div><!-- /.row -->
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+<!--movies thumbnails starts here	-->
+<div class ="row">
+	<ul class="media-grid">
+	{% if movies %}
+	<p>Found {{ movies|length }} movie{{ movies|pluralize }}.</p>
+		<ul>
+			{% for movie in movies %}
+				<a href="/movie/{{ movie.movie_slug_name }}"> 
+				{%if movie.movie_pix1 %}
+					<div class = "span 6"> 
+						<a href="/movie/{{ movie.movie_slug_name }}"> <img src = "{{ movie.movie_pix1 }}" width = "200px">
+					</div>
+				{%else%}
+			
+				{% endif %}
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>No movies available.</p>
+	{% endif %}
+	</ul>
+</div>
+<!--movies thumbnails ends here-->
+
+{% endblock %}

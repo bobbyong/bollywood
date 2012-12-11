@@ -15,7 +15,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home/', TemplateView.as_view(template_name='home.html')),
-    url(r'^$', TemplateView.as_view(template_name='index.html')),
+    #url(r'^$', TemplateView.as_view(template_name='index.html')),
+	#adding new view as homepage to display shows
+	url(r'^$', 'shows.views.home_page'),
     url(r'^show/$', 'shows.views.show_list'),
     url(r'^show/(?P<show_slug>[-\w]+)/$', 'shows.views.show_detail'),
     url(r'^show/(?P<show_slug>[-\w]+)/(?P<episode_id>[-\w]+)$', 'shows.views.episode_detail'),
