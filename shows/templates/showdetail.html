@@ -71,7 +71,7 @@
 {% if show.show_episode.all %}
 <h5>Episode:</h5>
 {% for episode in show.show_episode.all %}
-  <a href="/show/{{ show.show_slug_name }}/{{ episode.id }}">{{ episode }}<br>
+  <a href="/show/{{ show.show_slug_name }}/{{ episode.id }}">{{ episode }}</a> | <a href="/playlist/{{ show.show_slug_name }}/{{ episode.id }}">Playlist</a><br>
 {% endfor %} <br>
 {% endif %}
 
