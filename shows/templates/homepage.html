@@ -9,44 +9,75 @@
       <!--  Carousel -->
       <!--  consult Bootstrap docs at 
             http://twitter.github.com/bootstrap/javascript.html#carousel -->
+
+      <div class="span10 offset1 pagination-centered">
+      	<br>
+      	<h1>Start watching these shows for free</h1>
+      	<br>
       <div id="this-carousel-id" class="carousel slide">
+      	
         <div class="carousel-inner">
+          
+
           <div class="item active">
-            <a href="/show/koffee-karan/">  <img src="https://s3.amazonaws.com/Dekkho-Images/TV+Shows/Koffee+With+Karan+header.jpg" width="900" height="200" 
-alt="Koffee with Karan" />
-            </a>
-			 <div class="container">
+            <a href="/show/koffee-karan/">  
+            	<img src="https://s3.amazonaws.com/Dekkho-Images/TV+Shows/Koffee+With+Karan+header.jpg" width="975" height="427" alt="Koffee with Karan" />
+            
+
+            <div class="carousel-caption">
+              <p>Koffee with Karan</p>
+            </div>
+
+            <!--
+			<div class="container">
 					<div class="carousel-caption">
 					  <a class="btn btn-large btn-primary" href="/show/koffee-karan/">Watch Now</a>
 					</div>
-			 </div>
+			</div>
+			-->
+			</a>
           </div>
+
+          <!--
           <div class="item">
             <a href="">
-              <img src="{{ STATIC_URL }}img/kbc.jpg" width="900" height="200" alt="Kaun Banega Crorepati" />
+              <img src="{{ STATIC_URL }}img/kbc.jpg" width="975" height="427" alt="Kaun Banega Crorepati" />
             </a>
+
+           
             <div class="carousel-caption">
               <p>Kaun Banega Crorepati </p>
-              
             </div>
+        	
           </div>
+      		-->
+
+      	<!--
           <div class="item">
-            <a href="/show/koffee-karan/">
-              <img src="{{ STATIC_URL }}img/superdude.jpg" width="900" height="200"  alt="Super Dude" />
-            </a>
+            <a href="/show/superdude/">
+              <img src="{{ STATIC_URL }}img/superdude.jpg" width="975" height="427" alt="Super Dude" />
+          
+            
+            
             <div class="carousel-caption">
               <p>Super Dude</p>
-              <p><a href=""></a></p>
+             
             </div>
+        	</a>
           </div>
+		-->
+
           <div class="item">
-            <a href="">
-              <img src="{{ STATIC_URL }}img/DanceIndiaDance.jpg" width="900" height="200"alt="DanceIndiaDance" />
-            </a>
+            <a href="/show/dance-india-dance/">
+              <img src="{{ STATIC_URL }}img/DanceIndiaDance.jpg" width="975" height="427" alt="DanceIndiaDance" />
+           
+      
             <div class="carousel-caption">
               <p>Dance India Dance</p>
-              <p><a href=""></a></p>
+             
             </div>
+       
+       		</a>
           </div>
         </div><!-- .carousel-inner -->
         <!--  next and previous controls here
@@ -55,21 +86,27 @@ alt="Koffee with Karan" />
           <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
       </div><!-- .carousel -->
       <!-- end carousel -->
+  	  </div>
+	  
 
 	  
-	  
 	  <div class="row">
+
+
 							<div class="tabbable span12">
 								<ul class="nav nav-pills">
-									<li class="active"><a href="#tabs1-pane1" data-toggle="tab">Family</a></li>
-									<li><a href="#tabs1-pane2" data-toggle="tab">Talk Show</a></li>
+									<li class="active"><a href="#tabs1-pane5" data-toggle="tab">All Shows</a></li>
+									<li><a href="#tabs1-pane6" data-toggle="tab">All Movies</a></li>
+									<li><a href="#tabs1-pane1" data-toggle="tab">Family</a></li>
+									<li><a href="#tabs1-pane2" data-toggle="tab">Talk Shows</a></li>
 									<li><a href="#tabs1-pane3" data-toggle="tab">Music</a></li>
-									<li><a href="#tabs1-pane4" data-toggle="tab">Reality Show</a></li>
-									<li><a href="#tabs1-pane5" data-toggle="tab">All Shows</a></li>
+									
+									<!-- <li><a href="#tabs1-pane4" data-toggle="tab">Reality Show</a></li> -->
+									
 									
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="tabs1-pane1">
+									<div class="tab-pane" id="tabs1-pane1">
 										<div clas="row">
 												<ul class="media-grid">
 													{% if genres %}
@@ -80,7 +117,14 @@ alt="Koffee with Karan" />
 																		{% for show in genre.show_set.all %}
 																			{%if show.show_pix1 %}
 																				<div class="span16"> 
-																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																					<br>
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> 
+																					<br>
+																					<div class = "pagination-centered">
+																						{{ show.show_name }}
+																					</div>
+																					</a>
+
 																				</div>
 																			{% endif %}
 																		{% endfor %}
@@ -103,7 +147,13 @@ alt="Koffee with Karan" />
 																		{% for show in genre.show_set.all %}
 																			{%if show.show_pix1 %}
 																				<div class="span16"> 
-																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																					<br>
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> 
+																					<br>
+																					<div class = "pagination-centered">
+																						{{ show.show_name }}
+																					</div>
+																					</a>
 																				</div>
 																			{% endif %}
 																		{% endfor %}
@@ -126,8 +176,14 @@ alt="Koffee with Karan" />
 																<p><span class="label label-info">{{genre.genre_type}} </span> </p>
 																		{% for show in genre.show_set.all %}
 																			{%if show.show_pix1 %}
-																				<div> 
-																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																				<div class = "span16"> 
+																					<br>
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px">
+																					<br>
+																					<div class = "pagination-centered">
+																						{{ show.show_name }}
+																					</div>
+																					</a>
 																				</div>
 																			{% endif %}
 																		{% endfor %}
@@ -151,7 +207,13 @@ alt="Koffee with Karan" />
 																		{% for show in genre.show_set.all %}
 																			{%if show.show_pix1 %}
 																				<div class ="span16"> 
-																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+																					<br>
+																					<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px">
+																					<br>
+																					<div class = "pagination-centered">
+																						{{ show.show_name }}
+																					</div>
+																					</a>
 																				</div>
 																			{% endif %}
 																		{% endfor %}
@@ -172,15 +234,24 @@ alt="Koffee with Karan" />
 																		
 																		
 																		<!--Thumnails starts here-->
-									<div class="tab-pane" id="tabs1-pane5">
+									<div class="tab-pane active" id="tabs1-pane5">
 										<div class ="row">
 												<ul class="media-grid">
 												{% if shows %}
 													<ul>
+														<p><span class="label label-info">All Shows</span> </p>
 														{% for show in shows %}
 															{%if show.show_pix1 %}
-																<div class = "span 6"> 
-																	<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px"> </a>
+
+
+																<div class = "span16"> 
+																	<br>
+																	<a href="/show/{{ show.show_slug_name }}"> <img src = "{{ show.show_pix1 }}" width = "200px">
+																		<br>
+																		<div class = "pagination-centered">
+																						{{ show.show_name }}
+																		</div>
+																		</a>
 																</div>
 															{%else%}
 														
@@ -194,42 +265,58 @@ alt="Koffee with Karan" />
 										</div>
 										</div>
 									<!--Thumnails ends here-->
+							
+
+	  
+	  
+	  
+
+									<!--movies thumbnails starts here	-->
+	  								<div class="tab-pane" id="tabs1-pane6">
+										<div class ="row">
+												<ul class="media-grid">
+												{% if movies %}
+											<!-- <p>Found {{ movies|length }} movie{{ movies|pluralize }}.</p> -->
+												<ul>
+													<p><span class="label label-info">All Movies</span> </p>
+													{% for movie in movies %}
+														<a href="/movie/{{ movie.movie_slug_name }}"> 
+														{%if movie.movie_pix1 %}
+															<div class = "span16"> 
+																<br>
+																<a href="/movie/{{ movie.movie_slug_name }}"> <img src = "{{ movie.movie_pix1 }}" width = "200px">
+																	<br>
+																					<div class = "pagination-centered">
+																						{{ movie.movie_name }}
+																					</div>
+																					</a>
+															</div>
+														{%else%}
+													
+														{% endif %}
+													{% endfor %}
+												</ul>
+											{% else %}
+												<p>No movies available.</p>
+											{% endif %}
+											</ul>
+
+										</div>
+										</div>
+									<!--movies thumbnails ends here-->
 									
+							
+	  
+
+
+
 							</div><!-- /.tab-content -->
 						</div><!-- /.tabbable -->
 			</div><!-- /.row -->
-
-	  
-	  
-	  
-	  
 	  
 	  
 	  
 	  
 
-<!--movies thumbnails starts here	-->
-<div class ="row">
-	<ul class="media-grid">
-	{% if movies %}
-	<p>Found {{ movies|length }} movie{{ movies|pluralize }}.</p>
-		<ul>
-			{% for movie in movies %}
-				<a href="/movie/{{ movie.movie_slug_name }}"> 
-				{%if movie.movie_pix1 %}
-					<div class = "span 6"> 
-						<a href="/movie/{{ movie.movie_slug_name }}"> <img src = "{{ movie.movie_pix1 }}" width = "200px">
-					</div>
-				{%else%}
-			
-				{% endif %}
-			{% endfor %}
-		</ul>
-	{% else %}
-		<p>No movies available.</p>
-	{% endif %}
-	</ul>
-</div>
-<!--movies thumbnails ends here-->
 
 {% endblock %}

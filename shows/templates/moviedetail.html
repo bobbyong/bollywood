@@ -3,41 +3,23 @@
 {% block title %}{{ block.super }} - {{ movie.movie_name }}{% endblock %}
 
 {% block content %}
-<h2>{{ movie.movie_name }}</h2><br>
-
-{% if movie.startdate %}
-<h5>Start Date:</h5>
-{{ movie.movie_startdate }}<br>
-{% endif %}
-
-{% if movie.movie_official_site %}
-<h5>Official Site:</h5>
-{{ movie.movie_official_site }}<br>
-{% endif %}
-
-{% if movie.movie_rating %}
-<h5>Rating:</h5>
-{{ movie.movie_rating }}<br>
-{% endif %}
+<h2>{{ movie.movie_name }}</h2>
 
 {% if movie.movie_trailer %}
-<h5>Trailer:</h5>
-<iframe width="560" height="315" src="http://www.youtube.com/embed/{{ movie.movie_trailer }}?rel=0" frameborder="0" allowfullscreen></iframe><br>
+<h4>Trailer:</h4>
+<iframe width="780" height="439" src="http://www.youtube.com/embed/{{ movie.movie_trailer }}?rel=0" frameborder="0" allowfullscreen></iframe><br>
 {% endif %}
 
 {% if movie.movie_storyline %}
 <h5>Storyline:</h5>
-{{ movie.movie_storyline }}<br>
+<div class = "pagination-justified">
+{{ movie.movie_storyline }}
+</div>
 {% endif %}
 
 {% if movie.movie_country %}
 <h5>Country:</h5>
 {{ movie.movie_country }}<br>
-{% endif %}
-
-{% if movie.language %}
-<h5>Language:</h5>
-{{ movie.movie_language }}<br>
 {% endif %}
 
 {% if movie.movie_production_house.all %}
@@ -51,43 +33,52 @@
 <h5>Actor:</h5>
 {% for actor in movie.movie_actor.all %}
   {{ actor }}<br>
-{% endfor %} <br>
+{% endfor %}
 {% endif %}
 
 {% if movie.movie_director.all %}
 <h5>Director:</h5>
 {% for director in movie.movie_director.all %}
   {{ director }}<br>
-{% endfor %} <br>
+{% endfor %}
 {% endif %}
 
 {% if movie.movie_genre.all %}
 <h5>Genre:</h5>
 {% for genre in movie.movie_genre.all %}
   {{ genre }}<br>
-{% endfor %} <br>
+{% endfor %}
 {% endif %}
+
+
+{% if movie.startdate %}
+<h5>Start Date:</h5>
+{{ movie.movie_startdate }}<br>
+{% endif %}
+
+{% if movie.movie_official_site %}
+<h5>Official Site:</h5>
+<a href="{{ movie.movie_official_site }}">{{ movie.movie_official_site }}</a><br>
+{% endif %}
+
+{% if movie.movie_rating %}
+<h5>Rating:</h5>
+{{ movie.movie_rating }}<br>
+{% endif %}
+
+
+{% if movie.language %}
+<h5>Language:</h5>
+{{ movie.movie_language }}<br>
+{% endif %}
+
 
 {% if movie.movie_episode.all %}
 <h5>Episode:</h5>
 {% for episode in movie.movie_episode.all %}
   <a href="/movie/{{ movie.movie_slug_name }}/{{ episode.id }}">{{ episode }}<br>
-{% endfor %} <br>
+{% endfor %}
 {% endif %}
 
-{% if movie.movie_pix1 %}
-<h5>movie Pix 1:</h5>
-<img src = "{{ movie.movie_pix1 }}" width = "200px"><br><br>
-{% endif %}
-
-{% if movie.movie_pix2 %}
-<h5>movie Pix 2:</h5>
-<img src = "{{ movie.movie_pix2 }}" width = "200px"><br><br>
-{% endif %}
-
-{% if movie.movie_pix3 %}
-<h5>movie Pix 3:</h5>
-<img src = "{{ movie.movie_pix3 }}" width = "200px"><br><br> 
-{% endif %}
 
 {% endblock %}
