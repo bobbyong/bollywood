@@ -381,3 +381,13 @@ class Movie(models.Model):
 
 	def __unicode__(self):
 		return self.movie_name
+
+
+class MTV(models.Model):
+	mtv_name = models.CharField(max_length=100)
+	mtv_slug_name = models.SlugField(unique=True,
+										help_text=u'This is a permalink for MTV. Ensure name is unique.')
+	mtv_embed_code = models.TextField(blank=True)
+	
+	def __unicode__(self):
+		return self.mtv_name

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - {{ mtv.mtv_name }}{% endblock %}
+
+{% block content %}
+<h2>{{ mtv.mtv_name }}</h2>
+
+<br>
+
+<h5>Embed Code:</h5>
+
+{{ mtv.mtv_embed_code|safe }}<br>
+
+
+{% endblock %}

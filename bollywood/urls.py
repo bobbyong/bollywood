@@ -25,4 +25,5 @@ urlpatterns = patterns('',
     url(r'^movie/(?P<movie_slug>[-\w]+)/$', 'shows.views.movie_detail'),
     url(r'^accounts/', include('userena.urls')),  
     url(r'^playlist/(?P<show_slug>[-\w]+)/(?P<episode_id>[-\w]+)$', 'shows.views.show_playlist'),
+    url(r'^mtv/(?P<mtv_id>[-\w]+)/$', 'shows.views.mtv'),
 )

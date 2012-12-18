@@ -1,6 +1,6 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from .models import Show, Episode, Movie, Genre
+from .models import Show, Episode, Movie, Genre, MTV
 
 from django.http import Http404
 
@@ -66,4 +66,14 @@ def movie_detail(request, movie_slug):
         raise Http404
     return render_to_response('moviedetail.html',
                             {'movie': movie},
+                            context_instance=RequestContext(request))
+
+
+def mtv(request, mtv_id):
+    try:
+        mtv = MTV.objects.get(id = mtv_id)
+    except MTV.DoesNotExist:
+        raise Http404
+    return render_to_response('mtv.html',
+                            {'mtv': mtv},
                             context_instance=RequestContext(request))
