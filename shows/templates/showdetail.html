@@ -12,8 +12,10 @@
 		<h4>Trailer:</h4>
 
 		<div class="videoWrapperPlaylist">
-              <iframe width="780" height="439" src="http://www.youtube.com/embed/{{ show.show_trailer }}?rel=0" frameborder="0" allowfullscreen></iframe>
+              <iframe width="780" height="439" src="http://www.youtube.com/embed/{{ show.show_trailer }}?rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
             </div>
+		{%else %}
+			{{show.show_mtv_link|safe}}
 		{% endif %}
 	</div>
 

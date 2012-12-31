@@ -11,8 +11,12 @@
           <h3><a href = "/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></h2>
            <p>
             <div class="videoWrapperPlaylist">
-              <iframe width="780" height="439" src="http://www.youtube.com/embed/{{ episode.episode_trailer }}?rel=0" frameborder="0" allowfullscreen></iframe>
-            </div>
+             {% if episode.episode_trailer %}
+				<iframe width="780" height="439" src="http://www.youtube.com/embed/{{ episode.episode_trailer }}?rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+             {% else %}
+			    {{episode.episode_mtv_link|safe}}
+			 {% endif %}
+			</div>
 
 
             <!--

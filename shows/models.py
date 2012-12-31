@@ -307,6 +307,11 @@ class Episode(models.Model):
 									help_text=u'Key in the 11 characters Youtube ID. Eg M0jmSsQ5ptw',
 									verbose_name='Episode link')
 	episode_startdate = models.DateField(blank=True, null=True)
+	
+	###Mayank: added the MTV link to support MTV video embedding which is differenct from Youtube
+	episode_mtv_link=models.TextField(max_length=6000,
+									blank=True,
+									help_text=u'Copy and paste the embed video option from MTV website')
 
 	def __unicode__(self):
 		return self.episode_name
@@ -342,6 +347,10 @@ class Show(models.Model):
 	show_director = models.ManyToManyField(Director, blank=True, null=True)
 	show_genre = models.ManyToManyField(Genre, blank=True, null=True)
 	show_episode = models.ManyToManyField(Episode, blank=True, null=True)
+	###Mayank: added the MTV link to support MTV video embedding which is differenct from Youtube
+	show_mtv_link = models.TextField(max_length=6000,
+									blank=True,
+									help_text=u'Copy and paste the embed video option from MTV website')
 
 	def __unicode__(self):
 		return self.show_name
