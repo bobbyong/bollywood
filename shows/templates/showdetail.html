@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - {{ show.show_name }}{% endblock %}
+
+{% block content %}
+<h2>{{ show.show_name }}</h2>
+
+
+<div class="row">
+	<div class="span8">
+		{% if show.show_trailer %}
+		<h4>Trailer:</h4>
+
+		<div class="videoWrapperPlaylist">
+              <iframe width="780" height="439" src="http://www.youtube.com/embed/{{ show.show_trailer }}?rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+            </div>
+		{%else %}
+			{{show.show_mtv_link|safe}}
+		{% endif %}
+	</div>
+
+	<div class="span4">
+		<br><p>
+
+
+		<div id="accordion2" class="accordion">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <span class = "accordion-toggle"><a href = "/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></span>
+                <!-- <a href="#collapseThree" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                  {{ show.show_name }}
+                </a> -->
+              </div>
+              <div class="accordion-body" id="collapseThree">
+                <div class="accordion-inner">
+                
+                  {% for episode in show.show_episode.all %}
+                    <a href="/playlist/{{ show.show_slug_name }}/{{ episode.id }}">{{ episode }}</a><br>
+                  {% endfor %} <br>
+                </div>
+              </div>
+        	</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% if show.show_storyline %}
+<h5>Storyline:</h5>
+<div class="pagination-justified">{{ show.show_storyline }}<br></div>
+{% endif %}
+
+{% if show.show_country %}
+<h5>Country:</h5>
+{{ show.show_country }}<br>
+{% endif %}
+
+{% if show.show_network.all %}
+<h5>Network:</h5>
+{% for network in show.show_network.all %}
+  {{ network }}<br>
+{% endfor %}
+{% endif %}
+
+{% if show.show_actor.all %}
+<h5>Actor:</h5>
+{% for actor in show.show_actor.all %}
+  {{ actor }}<br>
+{% endfor %}
+{% endif %}
+
+{% if show.show_director.all %}
+<h5>Director:</h5>
+{% for director in show.show_director.all %}
+  {{ director }}<br>
+{% endfor %}
+{% endif %}
+
+{% if show.show_genre.all %}
+<h5>Genre:</h5>
+{% for genre in show.show_genre.all %}
+  {{ genre }}<br>
+{% endfor %}
+{% endif %}
+
+{% if show.show_current_episode %}
+<h5>Current Episode:</h5>
+{{ show.show_current_episode }}<br>
+{% endif %}
+
+
+{% if show.startdate %}
+<h5>Start Date:</h5>
+{{ show.show_startdate }}<br>
+{% endif %}
+
+
+
+{% if show.show_official_site %}
+<h5>Official Site:</h5>
+<a href="{{ show.show_official_site }}">{{ show.show_official_site }}</a><br>
+{% endif %}
+
+{% if show.show_rating %}
+<h5>Rating:</h5>
+{{ show.show_rating }}<br>
+{% endif %}
+
+
+{% endblock %}

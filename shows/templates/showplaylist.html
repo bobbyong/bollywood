@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - {{ show.show_name }} Playlist{% endblock %}
+
+{% block content %}
+
+<div class="row">
+        
+
+        <div class="span8">
+          <h3><a href = "/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></h2>
+           <p>
+            <div class="videoWrapperPlaylist">
+             {% if episode.episode_trailer %}
+				<iframe width="780" height="439" src="http://www.youtube.com/embed/{{ episode.episode_trailer }}?rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+             {% else %}
+			    {{episode.episode_mtv_link|safe}}
+			 {% endif %}
+			</div>
+
+
+            <!--
+            <div class = "playlist-button" style = "float:right; margin-right: -10px; margin-top: 5px;">
+              <a href = "{{ url }}" class="btn btn-primary">Next Video</a>
+            </div>
+            -->
+
+
+        </div>
+        
+        <div class="span4">
+
+          <br><p>
+          <br>
+
+
+
+          <div id="accordion2" class="accordion">
+            
+            
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <span class = "accordion-toggle"><a href = "/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></span>
+                <!-- <a href="#collapseThree" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                  {{ show.show_name }}
+                </a> -->
+              </div>
+              <div class="accordion-body" id="collapseThree">
+                <div class="accordion-inner">
+                
+                  {% for episode in show.show_episode.all %}
+                    <a href="/playlist/{{ show.show_slug_name }}/{{ episode.id }}">{{ episode }}<br>
+                  {% endfor %} <br>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+           
+
+
+
+
+        </div>
+        </div>
+       
+  </div>
+
+{% endblock %}

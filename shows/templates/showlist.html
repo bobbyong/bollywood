@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - List of Shows{% endblock %}
+
+{% block content %}
+
+{% if shows %}
+    <p>Found {{ shows|length }} show{{ shows|pluralize }}.</p>
+    <ul>
+        {% for show in shows %}
+        <li><a href="/show/{{ show.show_slug_name }}">{{ show.show_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No shows available.</p>
+{% endif %}
+
+{% endblock %}

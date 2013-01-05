@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - {{ episode.episode_name }}{% endblock %}
+
+{% block content %}
+<h2>{{ episode.episode_name }}</h2>
+
+<br>
+
+<h5>Episode Number:</h5>
+{{ episode.episode_number }}<br>
+
+{% if episode.episode_duration %}
+<h5>Duration:</h5>
+{{ episode.episode_duration }}<br>
+{% endif %}
+
+{% if episode.episode_trailer %}
+<h5>Trailer:</h5>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/{{ episode.episode_trailer }}?rel=0&iv_load_policy=3" frameborder="0" allowfullscreen></iframe><br>
+{% endif %}
+
+{% if episode.episode_startdate %}
+<h5>Start Date:</h5>
+{{ episode.episode_startdate }}<br>
+{% endif %}
+
+
+{% endblock %}
