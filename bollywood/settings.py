@@ -173,24 +173,6 @@ EMAIL_HOST_USER = 'bobbyong2001@gmail.com'
 EMAIL_HOST_PASSWORD = 'nknietafkbngsldi'  
 
 # SERVER ENVIRONMENT SETTINGS
-import dj_database_url  
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')} 
-DEBUG = True
-TEMPLATE_DEBUG = True
-
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'd869b3b67pqa29',                      # Or path to database file if using sqlite3.
-            'USER': 'pejccfxhoxqioq',                      # Not used with sqlite3.
-            'PASSWORD': 'Dj_0x6qq9u-hOGRFAUWhz2mFQ9',                  # Not used with sqlite3.
-            'HOST': 'ec2-54-243-230-216.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
-        }
-    }
-
-
-# SERVER ENVIRONMENT SETTINGS
 
 if os.environ.get('MYSITE_PRODUCTION'):
     import dj_database_url  
