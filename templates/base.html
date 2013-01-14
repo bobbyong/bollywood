@@ -3,8 +3,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Dekkho{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{% block title %}Dekkho{% endblock %}</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -43,12 +44,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/">Dekkho</a>
+          <a class="brand" href="/">Dekkho </a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <ul class="nav pull-right">
               <!-- <li class="active"><a href="/show">Shows</a></li>
               <li class="active"><a href="/movie">Movies</a></li> -->
-            </ul>
+			  {% if user.is_authenticated %}
+			  
+			  <li class="dropdown" >
+				  <a data-toggle="dropdown" class="dropdown-toggle" href="a href='{% url userena_profile_detail user.username %}">{% with profile=user.get_profile %}{{profile.user.username|title}}{% endwith %} <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">My Queue</a></li>
+						<li><a href="#">My Favs</a></li>
+						<li><a href='{% url userena_profile_detail user.username %}'>Account</a></li>
+						<li class=""><a href="/accounts/signout/">Sign Out</a></li>
+					</ul>
+			  </li>
+			  {%else%}
+			  <li class="active"><a href="/accounts/signin/">Login In</a></li>
+			  <li class="active"><a href="/accounts/signup/">Sign Up</a></li>
+			 {%endif%}
+			</ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>

@@ -161,10 +161,17 @@ AUTHENTICATION_BACKENDS = (
 ANONYMOUS_USER_ID = -1  
 
 AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
-  
-LOGIN_REDIRECT_URL = '/accounts/%(username)s/'  
+
+#@mayank Login redirect changed to home page on 01/10/2012
+#LOGIN_REDIRECT_URL = '/accounts/%(username)s/'  
+#LOGIN_REDIRECT_URL = '/'  
 LOGIN_URL = '/accounts/signin/'  
-LOGOUT_URL = '/accounts/signout/'
+#LOGOUT_URL = '/accounts/signout/'
+LOGOUT_URL = '/home/'
+##The below URLs overide the other signin and signout URLs
+USERENA_SIGNIN_REDIRECT_URL = '/' 
+USERENA_REDIRECT_ON_SIGNOUT='/'
+
 
 EMAIL_USE_TLS = True  
 EMAIL_HOST = 'smtp.gmail.com'  
@@ -217,7 +224,7 @@ elif os.environ.get('MAYANK_MACHINE'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'dekkho',                      # Or path to database file if using sqlite3.
+            'NAME': 'dekkho2',                      # Or path to database file if using sqlite3.
             'USER': 'postgres',                      # Not used with sqlite3.
             'PASSWORD': 'postgres',                  # Not used with sqlite3.
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
